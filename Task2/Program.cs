@@ -1,0 +1,78 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Task2
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            //№2 В массиве из N чисел найти последний нулевой элемент (его номер).
+            List<int> arr = new List<int>();
+            filling(ref arr);
+            printInfoList(arr, "Исходный массив: ");
+            Pause();
+        }
+        /// <summary>
+        /// Заполнение массива элементами
+        /// </summary>
+        /// <returns></returns>
+        private static void filling(ref List<int> arr)
+        {
+            //завершить ввод при вводе пользователем q
+            Console.WriteLine("Чтобы закончить ввод, введите q");
+            int i = 1;
+            while (true) {
+                Console.Write($"Введите {i}-й элемент массива: ");
+                string str = Console.ReadLine();
+                if (str != "q")
+                {
+                    try
+                    {
+                        arr.Add(int.Parse(str));
+                        i++;
+                    }
+                    catch
+                    {
+                        Console.WriteLine("Неверный формат. Введите целое число.");
+                    }
+                }
+                else break;
+            }
+        }
+
+        /// <summary>
+        /// Задержка экрана
+        /// </summary>
+        private static void Pause()
+        {
+            Console.ReadKey();
+        }
+        /// <summary>
+        /// Вывод массива на экран
+        /// </summary>
+        /// <param name="array">массив</param>
+        /// <param name="str">текст</param>
+        private static void printInfoList(List<int> array, string str)
+        {
+            if (array.Count == 0)
+            {
+                Console.WriteLine("Вы не ввели ни одного элемента");
+            }
+            else {
+                Console.WriteLine("");
+                Console.WriteLine(str);
+                for (int i = 0; i < array.Count; i++)
+                {
+                    Console.Write($"{array[i]} ");
+                }
+                Console.WriteLine("");
+                Console.WriteLine($"Последний нулевой элемент массива: {array[array.Count - 1]}, позиция {array.Count}");
+            }
+            
+        }
+    }
+}
