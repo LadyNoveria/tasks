@@ -4,18 +4,19 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Task2
+namespace Task3
 {
     class Program
     {
         static void Main(string[] args)
         {
-            //№2 В массиве из N чисел найти последний нулевой элемент (его номер).
+            //№3 В массиве из N чисел найти первый нулевой элемент (его номер)
             List<int> arr = new List<int>();
             filling(ref arr);
             printInfoList(arr, "Исходный массив: ");
             Pause();
         }
+
         /// <summary>
         /// Заполнение массива элементами
         /// </summary>
@@ -25,7 +26,8 @@ namespace Task2
             //завершить ввод при вводе пользователем q
             Console.WriteLine("Чтобы закончить ввод, введите q");
             int i = 1;
-            while (true) {
+            while (true)
+            {
                 Console.Write($"Введите {i}-й элемент массива: ");
                 string str = Console.ReadLine();
                 if (str != "q")
@@ -62,7 +64,8 @@ namespace Task2
             {
                 Console.WriteLine("Вы не ввели ни одного элемента");
             }
-            else {
+            else
+            {
                 int position = 0;
                 int value = 1;
                 Console.WriteLine("");
@@ -71,20 +74,21 @@ namespace Task2
                 {
                     Console.Write($"{array[i]} ");
                 }
+
                 for (int i = 0; i < array.Count; i++)
                 {
-                    if (array[i] == 0)
-                    {
+                    if (array[i] == 0) {
                         position = i;
                         value = 0;
+                        break;
                     }
                 }
 
                 Console.WriteLine("");
                 if (value == 1) Console.WriteLine("Массив не содержит нулевых элементов");
-                else Console.WriteLine($"Позиция последнего нулевого элемента массива: {position}");
+                else Console.WriteLine($"Позиция первого нулевого элемента массива: {position}");
             }
-            
+
         }
     }
 }
