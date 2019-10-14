@@ -4,19 +4,20 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Task5
+namespace Task6
 {
     class Program
     {
         static void Main(string[] args)
         {
-            Console.WriteLine(@"Задать массив 10 чисел. Воспользовавшись вспомогательным массивом, 
-            элементы исходного массива циклически сдвинуть на 6 позиций вправо.");
+            Console.WriteLine(@"№6 Задать массив 12 чисел, содержащий несколько нулей. 
+                Воспользовавшись вспомогательным массивом, все нулевые элементы перенести в начало, 
+                а остальные - в конец.");
             List<int> arr = new List<int>();
             List<int> newArr = new List<int>();
             filling(ref arr);
             printInfoList(arr, "Исходный массив: ");
-            shift(arr, ref newArr);
+            sortArr(arr, ref newArr);
             printInfoList(newArr, "Сдвинутый массив: ");
             Pause();
         }
@@ -40,12 +41,19 @@ namespace Task5
             int maxA = 10;
 
             //размер массива
-            int sizeArray = 10;
+            int sizeArray = 12;
             Random rnd = new Random();
 
             for (int i = 0; i < sizeArray; i++)
             {
                 arr.Add(rnd.Next(minA, maxA));
+            }
+
+            int amountNull = rnd.Next(minA, maxA);
+            //заполнение массива рандомным количеством нулей
+            for (int i = 0; i < amountNull; i++)
+            {
+                arr[rnd.Next(minA, maxA)] = 0;
             }
         }
 
@@ -64,19 +72,25 @@ namespace Task5
             }
         }
         /// <summary>
-        /// Сдвиг массива на заданное количество позиций вправо
+        /// Перемещение всех нулевых элементов в начало массива
         /// </summary>
         /// <param name="arr">исходный массив</param>
         /// <param name="newArr">результирующий массив</param>
-        private static void shift(List<int> arr, ref List<int> newArr) {
-            //количество позиций для сдвига
-            int position = 6;
-            for (int i = position; i < arr.Count; i++) {
-                newArr.Add(arr[i]);
+        private static void sortArr(List<int> arr, ref List<int> newArr)
+        {
+            for (int i = 0; i < arr.Count; i++) {
+                if (arr[i] == 0)
+                {
+                    newArr.Add(0);
+                }
             }
-            for (int i = 0; i < position; i++)
+
+            for (int i = 0; i < arr.Count; i++)
             {
-                newArr.Add(arr[i]);
+                if (arr[i] != 0)
+                {
+                    newArr.Add(arr[i]);
+                }
             }
         }
     }
