@@ -66,7 +66,11 @@ namespace Task8
             }
             Console.WriteLine("");
         }
-
+        /// <summary>
+        /// Нахождение минимального элемента массива
+        /// </summary>
+        /// <param name="array">исходный массив</param>
+        /// <returns></returns>
         private static int findMin(List<int> array) {
             int min = array[0];
             for (int i = 1; i < array.Count; i++) {
@@ -74,7 +78,11 @@ namespace Task8
             }
             return min;
         }
-
+        /// <summary>
+        /// Нахождение максимального элемента массива
+        /// </summary>
+        /// <param name="array">исходный массив</param>
+        /// <returns></returns>
         private static int findMax(List<int> array)
         {
             int max = array[0];
@@ -84,7 +92,13 @@ namespace Task8
             }
             return max;
         }
-
+        /// <summary>
+        /// Нахождение суммы элементов массива, находящихся между min и max
+        /// </summary>
+        /// <param name="min">минималный элемент массива</param>
+        /// <param name="max">максимальный элемент массива</param>
+        /// <param name="array">исходный массив</param>
+        /// <returns></returns>
         private static int findSum(int min, int max, List<int> array) {
             int sum = 0;
             Console.WriteLine("Подходящие значения массива: ");
