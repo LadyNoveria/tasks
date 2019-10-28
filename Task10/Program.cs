@@ -15,10 +15,27 @@ namespace Task10
             filling(ref arr);
             sortArr(ref arr);
             printInfoList(arr, "Исходный массив: ");
-            //List<int> array1 = checkValues(arr);
-            //printInfoList(array1);
+            List<int> array1 = checkValues(arr);
+            deleteDuplicateItems(ref arr, array1);
+            printInfoList(arr, "Полученный массив: ");
 
             Pause();
+        }
+
+        /// <summary>
+        /// Удаление одинаковых элементов из массива
+        /// </summary>
+        /// <param name="arr"></param>
+        /// <param name="array1"></param>
+        private static void deleteDuplicateItems(ref List<int> arr, List<int> array1) {
+            for (int i = 0; i < array1.Count; i++) {
+                for (int j = 0; j < arr.Count; j++) {
+                    if (array1[i] == arr[j]) {
+                        arr.Remove(arr[j]);
+                        j--;
+                    }
+                }            
+            }
         }
         /// <summary>
         /// Упорядочивание массива по убыванию
@@ -145,29 +162,10 @@ namespace Task10
             {
                 for (int i = 0; i < array.Count; i++)
                 {
-                    if (i % 2 == 0 && array[i] == n) return false;
+                    if (array[i] == n) return false;
                 }
                 return true;
             }
         }
-
-        /// <summary>
-        /// Посчет одинаковых элементов в массиве
-        /// </summary>
-        /// <param name="array"></param>
-        /// <param name="n"></param>
-        /// <returns></returns>
-        //private static int considerValues(List<int> array, int n)
-        //{
-        //    int count = 0;
-        //    for (int i = 0; i < array.Count; i++)
-        //    {
-        //        if (array[i] == n)
-        //        {
-        //            count++;
-        //        }
-        //    }
-        //    return count;
-        //}
     }
 }
